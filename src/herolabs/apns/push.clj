@@ -125,11 +125,11 @@
                   (h ctx evt)
                   (:no-super (meta h)))
         (proxy-super userEventTriggered ctx evt)))
-    (channelWritabilityChanged [^ChannelHandlerContext ctx evt]
+    (channelWritabilityChanged [^ChannelHandlerContext ctx]
       (when-not (when-let [h (get handlers :channel-writability-changed-handler )]
-                  (h ctx evt)
+                  (h ctx)
                   (:no-super (meta h)))
-        (proxy-super channelWritabilityChanged ctx ^Throwable evt)))
+        (proxy-super channelWritabilityChanged ctx)))
     (exceptionCaught [^ChannelHandlerContext ctx cause]
       (when-not (when-let [h (get handlers :exception-caught-handler )]
                   (h ctx cause)
